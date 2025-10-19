@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.5.1\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7BE9686A-192B-4565-840F-D0D85C3E8A60}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>HorseRace</RootNamespace>
+    <AssemblyName>HorseRace</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="FrmBase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBase.Designer.cs">
+      <DependentUpon>FrmBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmCreateHorse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCreateHorse.Designer.cs">
+      <DependentUpon>FrmCreateHorse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmCreateJockey.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCreateJockey.Designer.cs">
+      <DependentUpon>FrmCreateJockey.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmCreateRace.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCreateRace.Designer.cs">
+      <DependentUpon>FrmCreateRace.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmCreateRaceCard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCreateRaceCard.Designer.cs">
+      <DependentUpon>FrmCreateRaceCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmCreateRaceDay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCreateRaceDay.Designer.cs">
+      <DependentUpon>FrmCreateRaceDay.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmHorseAddOrEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmHorseAddOrEdit.Designer.cs">
+      <DependentUpon>FrmHorseAddOrEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmInfo.Designer.cs">
+      <DependentUpon>FrmInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmJockeyAddOrEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmJockeyAddOrEdit.Designer.cs">
+      <DependentUpon>FrmJockeyAddOrEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMain.Designer.cs">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmRaceAddorEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmRaceAddorEdit.Designer.cs">
+      <DependentUpon>FrmRaceAddorEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmRaceCardAddOrEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmRaceCardAddOrEdit.Designer.cs">
+      <DependentUpon>FrmRaceCardAddOrEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmRaceDayAddOrEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmRaceDayAddOrEdit.Designer.cs">
+      <DependentUpon>FrmRaceDayAddOrEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmSelectJockey.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSelectJockey.Designer.cs">
+      <DependentUpon>FrmSelectJockey.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202510191430011_FinalNullableConfiguration.cs" />
+    <Compile Include="Migrations\202510191430011_FinalNullableConfiguration.Designer.cs">
+      <DependentUpon>202510191430011_FinalNullableConfiguration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Configurations\BaseConfiguration.cs" />
+    <Compile Include="Models\Configurations\HorseConfiguration.cs" />
+    <Compile Include="Models\Configurations\JockeyConfiguration.cs" />
+    <Compile Include="Models\Configurations\RaceCardConfiguration.cs" />
+    <Compile Include="Models\Configurations\RaceConfiguration.cs" />
+    <Compile Include="Models\Configurations\RaceDayConfiguration.cs" />
+    <Compile Include="Models\ContextClasses\MyContext.cs" />
+    <Compile Include="Models\Entity\AllData.cs" />
+    <Compile Include="Models\Entity\BaseEntity.cs" />
+    <Compile Include="Models\Entity\Horse.cs" />
+    <Compile Include="Models\Entity\Jockey.cs" />
+    <Compile Include="Models\Entity\Race.cs" />
+    <Compile Include="Models\Entity\RaceCard.cs" />
+    <Compile Include="Models\Entity\RaceDay.cs" />
+    <Compile Include="Models\Enums\DataStatus.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmBase.resx">
+      <DependentUpon>FrmBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCreateHorse.resx">
+      <DependentUpon>FrmCreateHorse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCreateJockey.resx">
+      <DependentUpon>FrmCreateJockey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCreateRace.resx">
+      <DependentUpon>FrmCreateRace.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCreateRaceCard.resx">
+      <DependentUpon>FrmCreateRaceCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCreateRaceDay.resx">
+      <DependentUpon>FrmCreateRaceDay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmHorseAddOrEdit.resx">
+      <DependentUpon>FrmHorseAddOrEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmInfo.resx">
+      <DependentUpon>FrmInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmJockeyAddOrEdit.resx">
+      <DependentUpon>FrmJockeyAddOrEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMain.resx">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmRaceAddorEdit.resx">
+      <DependentUpon>FrmRaceAddorEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmRaceCardAddOrEdit.resx">
+      <DependentUpon>FrmRaceCardAddOrEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmRaceDayAddOrEdit.resx">
+      <DependentUpon>FrmRaceDayAddOrEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSelectJockey.resx">
+      <DependentUpon>FrmSelectJockey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202510191430011_FinalNullableConfiguration.resx">
+      <DependentUpon>202510191430011_FinalNullableConfiguration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.1\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.1\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.5.1\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" />
+</Project>
