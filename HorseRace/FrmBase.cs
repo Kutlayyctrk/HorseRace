@@ -17,7 +17,8 @@ namespace HorseRace
             InitializeComponent();
             StartPosition=FormStartPosition.CenterScreen;
             ShowIcon = false;
-            this.KeyDown += FrmBase_KeyDown;
+            KeyPreview = true;
+            KeyDown += FrmBase_KeyDown;
         }
 
         private void FrmBase_KeyDown(object sender, KeyEventArgs e)
