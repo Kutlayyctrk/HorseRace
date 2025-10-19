@@ -29,7 +29,7 @@ namespace HorseRace
         RaceCard _selectedRaceCard;
         private void BtnAddRaceCard_Click(object sender, EventArgs e)
         {
-            FrmRaceCardAddOrEdit frmRaceCardAddOrEdit = new FrmRaceCardAddOrEdit("Add");
+            FrmRaceCardAddOrEdit frmRaceCardAddOrEdit = new FrmRaceCardAddOrEdit("Add");//Ekleme Constructor'ı
             frmRaceCardAddOrEdit.Text = "Add";
             if (frmRaceCardAddOrEdit.ShowDialog() == DialogResult.OK)
             {
@@ -41,7 +41,7 @@ namespace HorseRace
 
         private void BtnEditBulletin_Click(object sender, EventArgs e)
         {
-            FrmRaceCardAddOrEdit frmRaceCardAddOrEdit = new FrmRaceCardAddOrEdit("Edit", _selectedRaceCard.Id);
+            FrmRaceCardAddOrEdit frmRaceCardAddOrEdit = new FrmRaceCardAddOrEdit("Edit", _selectedRaceCard.Id);//Editleme Constructor'ı
             frmRaceCardAddOrEdit.Text = "Edit";
             if (frmRaceCardAddOrEdit.ShowDialog() == DialogResult.OK)
             {

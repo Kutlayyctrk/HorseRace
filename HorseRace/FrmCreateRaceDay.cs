@@ -27,7 +27,7 @@ namespace HorseRace
 
         private void BtnAddRaceDay_Click(object sender, EventArgs e)
         {
-            FrmRaceDayAddOrEdit frmRaceDayAddOrEdit = new FrmRaceDayAddOrEdit("Add");
+            FrmRaceDayAddOrEdit frmRaceDayAddOrEdit = new FrmRaceDayAddOrEdit("Add");//Ekleme Constructor'ı
             frmRaceDayAddOrEdit.Text = "Add";
             if (frmRaceDayAddOrEdit.ShowDialog() == DialogResult.OK)
             {
@@ -47,7 +47,7 @@ namespace HorseRace
             }
             else
             {
-                FrmRaceDayAddOrEdit frmRaceDayAddOrEdit = new FrmRaceDayAddOrEdit("Edit", _selectedRaceDay.Id);
+                FrmRaceDayAddOrEdit frmRaceDayAddOrEdit = new FrmRaceDayAddOrEdit("Edit", _selectedRaceDay.Id);//Ekleme Constructor'ı
                 frmRaceDayAddOrEdit.Text = "Edit";
                 if (frmRaceDayAddOrEdit.ShowDialog() == DialogResult.OK)
                 {

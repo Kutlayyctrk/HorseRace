@@ -45,7 +45,7 @@ namespace HorseRace
             }
             else
             {
-                FrmRaceAddorEdit frmRaceAddorEdit = new FrmRaceAddorEdit("Edit", _selectedRace.Id);
+                FrmRaceAddorEdit frmRaceAddorEdit = new FrmRaceAddorEdit("Edit", _selectedRace.Id);//Edit Constructor'ı
                 frmRaceAddorEdit.Text = "Edit";
                 if (frmRaceAddorEdit.ShowDialog() == DialogResult.OK)
                 {
