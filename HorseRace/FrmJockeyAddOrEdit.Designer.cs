@@ -33,6 +33,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.BtnAddOrEdit = new System.Windows.Forms.Button();
+            this.BtnActivate = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // TxtJockeyName
@@ -69,18 +70,29 @@
             // 
             // BtnAddOrEdit
             // 
-            this.BtnAddOrEdit.Location = new System.Drawing.Point(236, 165);
+            this.BtnAddOrEdit.Location = new System.Drawing.Point(238, 189);
             this.BtnAddOrEdit.Name = "BtnAddOrEdit";
             this.BtnAddOrEdit.Size = new System.Drawing.Size(100, 23);
             this.BtnAddOrEdit.TabIndex = 2;
             this.BtnAddOrEdit.UseVisualStyleBackColor = true;
             this.BtnAddOrEdit.Click += new System.EventHandler(this.BtnAddOrEdit_Click);
             // 
+            // BtnActivate
+            // 
+            this.BtnActivate.Location = new System.Drawing.Point(238, 160);
+            this.BtnActivate.Name = "BtnActivate";
+            this.BtnActivate.Size = new System.Drawing.Size(100, 23);
+            this.BtnActivate.TabIndex = 3;
+            this.BtnActivate.Text = "Activate";
+            this.BtnActivate.UseVisualStyleBackColor = true;
+            this.BtnActivate.Click += new System.EventHandler(this.BtnActivate_Click);
+            // 
             // FrmJockeyAddOrEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(523, 323);
+            this.Controls.Add(this.BtnActivate);
             this.Controls.Add(this.BtnAddOrEdit);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -100,5 +112,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button BtnAddOrEdit;
+        private System.Windows.Forms.Button BtnActivate;
     }
 }

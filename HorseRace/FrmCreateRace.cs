@@ -5,8 +5,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.Entity.Infrastructure;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -80,19 +82,25 @@ namespace HorseRace
                     MessageBox.Show("Please select a Race to Delete");
                     return;
                 }
+                if (_selectedRace.RaceCardId.HasValue)
+                {
+                    MessageBox.Show("This race has been assigned to an active newsletter.Remove the newsletter assignment before deleting the race.");
+                    return;
+                }
                 else
                 {
-                    _db.Races.Remove(_selectedRace);
+                    _selectedRace.DataStatus = Models.Enums.DataStatus.Deleted;
+                    _selectedRace.DeletedDate = DateTime.Now;
                     _db.SaveChanges();
                     dgvResultRace.DataSource = _db.Races.ToList();
                     MessageBox.Show("The Race was successfully deleted.");
                 }
 
             }
-            catch (DbUpdateException)
+            catch (Exception ex)
             {
 
-                MessageBox.Show("You cannot delete a race that has been added to a newsletter. You must first remove it from the newsletter.");
+                MessageBox.Show(ex.Message);
                 return;
             }
         }

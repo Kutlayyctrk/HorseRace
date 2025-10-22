@@ -18,12 +18,12 @@ namespace HorseRace
         {
             InitializeComponent();
             _db = new MyContext();
-            DgvJockeys.DataSource = _db.Jockeys.ToList();
+            DgvJockeys.DataSource = _db.Jockeys.Where(x => x.DataStatus == Models.Enums.DataStatus.Updated || x.DataStatus == Models.Enums.DataStatus.Inserted).ToList();
             _horse = _db.Horses.Find(horseId);
         }
         MyContext _db;
         Horse _horse;
-        
+
 
 
         private void TxtJockeyName_TextChanged(object sender, EventArgs e)

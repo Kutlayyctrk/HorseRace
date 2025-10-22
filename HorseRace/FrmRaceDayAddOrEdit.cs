@@ -20,7 +20,7 @@ namespace HorseRace
             BtnAddOrEdit.Text = ButtonText;
             _db = new MyContext();
             _raceDay = _db.RaceDays.Find(RacedayId);
-            CmbBulletin.DataSource = _db.RaceCards.ToList();
+            CmbBulletin.DataSource = _db.RaceCards.Where(x=>x.DataStatus==Models.Enums.DataStatus.Updated||x.DataStatus==Models.Enums.DataStatus.Inserted).ToList();
             foreach (RaceCard card in _raceDay.RaceCards)
             {
                 LstBulletin.Items.Add(card);
@@ -28,6 +28,14 @@ namespace HorseRace
             TxtName.Text = _raceDay.Name;
             DtpDate.Value = _raceDay.Date;
             CmbBulletin.SelectedIndex = -1;
+            if(_raceDay.DataStatus==Models.Enums.DataStatus.Updated||_raceDay.DataStatus==Models.Enums.DataStatus.Inserted)
+            {
+                BtnActivate.Visible = true;
+            }
+            else
+            {
+                BtnActivate.Visible=false;
+            }
         }
         MyContext _db;
         RaceDay _raceDay;
@@ -40,6 +48,7 @@ namespace HorseRace
             CmbBulletin.DisplayMember = "Name";
             LstBulletin.DisplayMember = "Name";
             CmbBulletin.SelectedIndex=-1;
+            CmbBulletin.DataSource = _db.RaceCards.Where(x => x.DataStatus == Models.Enums.DataStatus.Updated || x.DataStatus == Models.Enums.DataStatus.Inserted).ToList();
         }
 
         private void BtnAddOrEdit_Click(object sender, EventArgs e)
@@ -79,6 +88,8 @@ namespace HorseRace
                         {
                             _raceDay.RaceCards.Add(item);
                         }
+                        _raceDay.DataStatus = Models.Enums.DataStatus.Updated;
+                        _raceDay.UpdatedDate = DateTime.Now;
                         _db.SaveChanges();
                         DialogResult = DialogResult.OK;
                         MessageBox.Show("Raceday updated succesfully");
@@ -102,6 +113,14 @@ namespace HorseRace
         {
             LstBulletin.Items.Remove(LstBulletin.SelectedItem);
             _raceDay.RaceCards.Remove(LstBulletin.SelectedItem as RaceCard);
+        }
+
+        private void BtnActivate_Click(object sender, EventArgs e)
+        {
+            _raceDay.DataStatus = Models.Enums.DataStatus.Updated;
+            _raceDay.UpdatedDate= DateTime.Now;
+            _raceDay.DeletedDate = null;
+            _db.SaveChanges();
         }
     }
 }

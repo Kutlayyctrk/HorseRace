@@ -26,7 +26,15 @@ namespace HorseRace
             TxtAge.Text = _horse.Age.ToString();
             TxtName.Text = _horse.Name;
             TxtRegion.Text = _horse.Region;
+            if (_horse.DataStatus == Models.Enums.DataStatus.Deleted)
+            {
+                BtnActivate.Visible = true;
 
+            }
+            else
+            {
+                BtnActivate.Visible = false;
+            }
 
 
         }
@@ -36,7 +44,7 @@ namespace HorseRace
             BtnAddOrEdit.Text = ButtonText;
             _db = new MyContext();
             _horse = new Horse();
-
+            BtnActivate.Visible = false;
         }
 
 
@@ -93,6 +101,8 @@ namespace HorseRace
                         _horse.Name = TxtName.Text;
                         _horse.Age = Convert.ToInt32(TxtAge.Text);
                         _horse.Region = TxtRegion.Text;
+                        _horse.DataStatus = Models.Enums.DataStatus.Updated;
+                        _horse.UpdatedDate = DateTime.Now;
                         _db.SaveChanges();
 
                         DialogResult = DialogResult.OK;
@@ -109,9 +119,14 @@ namespace HorseRace
             }
         }
 
-        private void BtnSelectJockey_Click(object sender, EventArgs e)
-        {
 
+
+        private void BtnActivate_Click(object sender, EventArgs e)
+        {
+            _horse.DataStatus = Models.Enums.DataStatus.Updated;
+            _horse.UpdatedDate = DateTime.Now;
+            _horse.DeletedDate = null;
+            _db.SaveChanges();
         }
     }
 }

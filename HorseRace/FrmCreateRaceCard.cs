@@ -73,18 +73,24 @@ namespace HorseRace
                     MessageBox.Show("Please select a Bulletin to delete");
                     return;
                 }
+                if(_selectedRaceCard.RaceDayId.HasValue)
+                {
+                    MessageBox.Show("This bulletin has been assigned to an active race day. Remove the race day assignment before deleting the bulletin.");
+                    return;
+                }
                 else
                 {
-                    _db.RaceCards.Remove(_selectedRaceCard);
+                    _selectedRaceCard.DataStatus = Models.Enums.DataStatus.Deleted;
+                    _selectedRaceCard.DeletedDate= DateTime.Now;
                     _db.SaveChanges();
                     dgvResultRaceCard.DataSource = _db.RaceCards.ToList();
                     MessageBox.Show("The RaceCard was succesfully deleted. ");
                 }
 
             }
-            catch (DbUpdateException)
+            catch (Exception ex)
             {
-                MessageBox.Show("To delete a Bulletin, you must first remove it from the race days.");
+                MessageBox.Show(ex.Message);
                 return;
             }
 

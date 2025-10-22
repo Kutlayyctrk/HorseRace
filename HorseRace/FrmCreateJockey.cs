@@ -54,6 +54,7 @@ namespace HorseRace
                     _db.Dispose();
                     _db = new MyContext();
                     dgvResultJockey.DataSource = _db.Jockeys.ToList();
+
                 }
 
 
@@ -79,33 +80,39 @@ namespace HorseRace
         {
             try
             {
-            if (_selectedJockey == null)
+                if (_selectedJockey == null)
+                {
+                    MessageBox.Show("Please select a jockey to delete.");
+                    return;
+                }
+                else
+                {
+                    if (_db.Horses.Any(x => x.JokeyId == _selectedJockey.Id))
+                    {
+                        MessageBox.Show("This jockey has been assigned to an active horse. Remove the horse assignment before deleting the horse.");
+                        return;
+                    }
+                    else
+                    {
+                        _selectedJockey.DataStatus = Models.Enums.DataStatus.Deleted;
+                        _selectedJockey.DeletedDate = DateTime.Now;
+                        _db.SaveChanges();
+                        dgvResultJockey.DataSource = _db.Jockeys.ToList();
+                        MessageBox.Show("The jockey was successfully deleted.");
+
+                    }
+
+
+                }
+
+            }
+            catch (Exception ex)
             {
-                MessageBox.Show("Please select a jockey to delete.");
+                MessageBox.Show(ex.Message);
                 return;
             }
-            else
-            {
-                _db.Jockeys.Remove(_selectedJockey);
-                _db.SaveChanges();
-                dgvResultJockey.DataSource = _db.Jockeys.ToList();
-                MessageBox.Show("The jockey was successfully deleted.");
-
-            }
-
-            }
-            catch (DbUpdateException)
-            {
-
-                MessageBox.Show("You cannot delete a jockey who has been assigned to another horse. You must first disconnect the jockey from the horse.");
-                return;
-            }
-
-
-
-
         }
 
-     
+
     }
 }

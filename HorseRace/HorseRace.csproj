@@ -144,6 +144,10 @@
     <Compile Include="Migrations\202510191430011_FinalNullableConfiguration.Designer.cs">
       <DependentUpon>202510191430011_FinalNullableConfiguration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202510221415568_mig1.cs" />
+    <Compile Include="Migrations\202510221415568_mig1.Designer.cs">
+      <DependentUpon>202510221415568_mig1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Configurations\BaseConfiguration.cs" />
     <Compile Include="Models\Configurations\HorseConfiguration.cs" />
@@ -160,6 +164,11 @@
     <Compile Include="Models\Entity\RaceCard.cs" />
     <Compile Include="Models\Entity\RaceDay.cs" />
     <Compile Include="Models\Enums\DataStatus.cs" />
+    <Compile Include="Models\ResponseModels\HorseResponseModel.cs" />
+    <Compile Include="Models\ResponseModels\JockeyResponseModel.cs" />
+    <Compile Include="Models\ResponseModels\RaceCardResponseModel.cs" />
+    <Compile Include="Models\ResponseModels\RaceDayResponseModel.cs" />
+    <Compile Include="Models\ResponseModels\RaceResponseModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FrmBase.resx">
@@ -206,6 +215,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202510191430011_FinalNullableConfiguration.resx">
       <DependentUpon>202510191430011_FinalNullableConfiguration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202510221415568_mig1.resx">
+      <DependentUpon>202510221415568_mig1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

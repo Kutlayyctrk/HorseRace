@@ -81,7 +81,8 @@ namespace HorseRace
             }
             else
             {
-                _db.RaceDays.Remove(_selectedRaceDay);
+                _selectedRaceDay.DataStatus = Models.Enums.DataStatus.Deleted;
+                _selectedRaceDay.DeletedDate = DateTime.Now;
                 _db.SaveChanges();
                 dgvResultRaceDay.DataSource = _db.RaceDays.ToList();
                 MessageBox.Show("The RaceDay was successfully deleted.");

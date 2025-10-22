@@ -36,6 +36,7 @@
             this.CmbHorse = new System.Windows.Forms.ComboBox();
             this.BtnHorseDelete = new System.Windows.Forms.Button();
             this.BtnHorseAdd = new System.Windows.Forms.Button();
+            this.BtnActivate = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // BtnAddOrEdit
@@ -109,11 +110,22 @@
             this.BtnHorseAdd.UseVisualStyleBackColor = true;
             this.BtnHorseAdd.Click += new System.EventHandler(this.BtnHorseAdd_Click);
             // 
+            // BtnActivate
+            // 
+            this.BtnActivate.Location = new System.Drawing.Point(152, 185);
+            this.BtnActivate.Name = "BtnActivate";
+            this.BtnActivate.Size = new System.Drawing.Size(100, 23);
+            this.BtnActivate.TabIndex = 9;
+            this.BtnActivate.Text = "Activate";
+            this.BtnActivate.UseVisualStyleBackColor = true;
+            this.BtnActivate.Click += new System.EventHandler(this.BtnActivate_Click);
+            // 
             // FrmRaceAddorEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(541, 249);
+            this.Controls.Add(this.BtnActivate);
             this.Controls.Add(this.BtnHorseAdd);
             this.Controls.Add(this.BtnHorseDelete);
             this.Controls.Add(this.CmbHorse);
@@ -139,5 +151,6 @@
         private System.Windows.Forms.ComboBox CmbHorse;
         private System.Windows.Forms.Button BtnHorseDelete;
         private System.Windows.Forms.Button BtnHorseAdd;
+        private System.Windows.Forms.Button BtnActivate;
     }
 }

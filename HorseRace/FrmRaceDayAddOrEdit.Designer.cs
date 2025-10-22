@@ -38,6 +38,7 @@
             this.BtnAddBulletin = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.CmbBulletin = new System.Windows.Forms.ComboBox();
+            this.BtnActivate = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // BtnAddOrEdit
@@ -127,11 +128,22 @@
             this.CmbBulletin.Size = new System.Drawing.Size(139, 24);
             this.CmbBulletin.TabIndex = 2;
             // 
+            // BtnActivate
+            // 
+            this.BtnActivate.Location = new System.Drawing.Point(159, 198);
+            this.BtnActivate.Name = "BtnActivate";
+            this.BtnActivate.Size = new System.Drawing.Size(123, 23);
+            this.BtnActivate.TabIndex = 7;
+            this.BtnActivate.Text = "Activate";
+            this.BtnActivate.UseVisualStyleBackColor = true;
+            this.BtnActivate.Click += new System.EventHandler(this.BtnActivate_Click);
+            // 
             // FrmRaceDayAddOrEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(594, 289);
+            this.Controls.Add(this.BtnActivate);
             this.Controls.Add(this.CmbBulletin);
             this.Controls.Add(this.BtnAddBulletin);
             this.Controls.Add(this.BtnDeleteBulletin);
@@ -161,5 +173,6 @@
         private System.Windows.Forms.Button BtnAddBulletin;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox CmbBulletin;
+        private System.Windows.Forms.Button BtnActivate;
     }
 }

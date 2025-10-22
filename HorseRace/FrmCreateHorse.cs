@@ -1,5 +1,6 @@
 ﻿using HorseRace.Models.ContextClasses;
 using HorseRace.Models.Entity;
+using HorseRace.Models.ResponseModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,6 +21,7 @@ namespace HorseRace
             InitializeComponent();
             _db = new MyContext();
             dgvResultHorse.CellClick += dgvResultHorse_CellClick;
+
             dgvResultHorse.DataSource = _db.Horses.ToList();
         }
         MyContext _db;
@@ -48,7 +50,7 @@ namespace HorseRace
             }
             else
             {
-                FrmHorseAddOrEdit frmHorseAddOrEdit = new FrmHorseAddOrEdit("Edit",_selectedHorse.Id); //Edit constructor'ı
+                FrmHorseAddOrEdit frmHorseAddOrEdit = new FrmHorseAddOrEdit("Edit", _selectedHorse.Id); //Edit constructor'ı
                 frmHorseAddOrEdit.Text = "Edit Horse";
                 if (frmHorseAddOrEdit.ShowDialog() == DialogResult.OK)
                 {
@@ -78,27 +80,40 @@ namespace HorseRace
         {
             try
             {
-            if(_selectedHorse==null)
-            {
-                MessageBox.Show("Please select a horse to delete.");
-                return;
-            }
-            else
-            {
-                
-                _db.Horses.Remove(_selectedHorse);
-                _db.SaveChanges();
-                dgvResultHorse.DataSource = _db.Horses.ToList();
-                MessageBox.Show("The horse was successfully deleted.");
-            }
+                if (_selectedHorse == null)
+                {
+                    MessageBox.Show("Please select a horse to delete.");
+                    return;
+                }
+                else
+                {
+                    if (_selectedHorse.RaceId.HasValue)
+                    {
+                        MessageBox.Show("This horse has been assigned to an active race. Remove the race assignment before deleting the horse.");
+                        return;
+                    }
+                    else
+                    {
+                        _selectedHorse.DataStatus = Models.Enums.DataStatus.Deleted;
+                        _selectedHorse.DeletedDate = DateTime.Now;
+                        _db.SaveChanges();
+                        dgvResultHorse.DataSource = _db.Horses.ToList();
+                        MessageBox.Show("The horse was successfully deleted.");
+
+                    }
+
+                }
 
             }
-            catch (DbUpdateException)
+            catch (Exception ex)
             {
 
-                MessageBox.Show("You cannot remove a horse that has been assigned to another race. You must first remove the horse from all races.");
+                MessageBox.Show(ex.Message);
                 return;
             }
+
         }
+
     }
 }
+

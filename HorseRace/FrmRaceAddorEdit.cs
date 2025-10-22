@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -20,7 +21,7 @@ namespace HorseRace
             BtnAddOrEdit.Text = ButtonText;
             _db = new MyContext();
             _race = _db.Races.Find(raceId);
-            CmbHorse.DataSource = _db.Horses.ToList();
+            CmbHorse.DataSource = _db.Horses.Where(x => x.DataStatus == Models.Enums.DataStatus.Inserted || x.DataStatus == Models.Enums.DataStatus.Updated).ToList();
             foreach (Horse item in _race.Horses)
             {
                 LstHorses.Items.Add(item);
@@ -29,6 +30,15 @@ namespace HorseRace
             CmbHorse.DisplayMember = "Name";
             LstHorses.DisplayMember = "Name";
             CmbHorse.SelectedIndex = -1;
+            if (_race.DataStatus == Models.Enums.DataStatus.Updated || _race.DataStatus == Models.Enums.DataStatus.Inserted)
+            {
+                BtnActivate.Visible = true;
+
+            }
+            else
+            {
+                BtnActivate.Visible = false;
+            }
 
 
 
@@ -45,7 +55,9 @@ namespace HorseRace
             CmbHorse.DisplayMember = "Name";
             LstHorses.DisplayMember = "Name";
             CmbHorse.SelectedIndex = -1;
-
+            BtnActivate.Visible = false;
+            CmbHorse.DataSource = _db.Horses.Where(x => x.DataStatus == Models.Enums.DataStatus.Inserted || x.DataStatus == Models.Enums.DataStatus.Updated).ToList();
+            
         }
 
         private void BtnAddOrEdit_Click(object sender, EventArgs e)
@@ -82,6 +94,8 @@ namespace HorseRace
                         {
                             _race.Horses.Add(item);
                         }
+                        _race.DataStatus = Models.Enums.DataStatus.Updated;
+                        _race.UpdatedDate = DateTime.Now;
                         _db.SaveChanges();
                         DialogResult = DialogResult.OK;
                         MessageBox.Show("Race has updated succesfully");
@@ -105,6 +119,14 @@ namespace HorseRace
         {
             LstHorses.Items.Remove(LstHorses.SelectedItem);
             _race.Horses.Remove(LstHorses.SelectedItem as Horse);
+        }
+
+        private void BtnActivate_Click(object sender, EventArgs e)
+        {
+            _race.DataStatus = Models.Enums.DataStatus.Updated;
+            _race.UpdatedDate = DateTime.Now;
+            _race.DeletedDate = null;
+            _db.SaveChanges();
         }
     }
 }

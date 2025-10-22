@@ -20,7 +20,7 @@ namespace HorseRace
             BtnAddOrEdit.Text = ButtonText;
             _db = new MyContext();
             _raceCard = _db.RaceCards.Find(raceCardId);
-            CmbRace.DataSource = _db.Races.ToList();
+            CmbRace.DataSource = _db.Races.Where(x=>x.DataStatus==Models.Enums.DataStatus.Inserted||x.DataStatus==Models.Enums.DataStatus.Updated).ToList();
             foreach (Race item in _raceCard.Races)
             {
                 LstRaces.Items.Add(item);
@@ -30,6 +30,14 @@ namespace HorseRace
             CmbRace.DisplayMember = "Name";
             LstRaces.DisplayMember = "Name";
             CmbRace.SelectedIndex = -1;
+            if(_raceCard.DataStatus==Models.Enums.DataStatus.Inserted||_raceCard.DataStatus==Models.Enums.DataStatus.Updated)
+            {
+                BtnActivate.Visible = true;
+            }
+            else
+            {
+                BtnActivate.Visible = false;
+            }
         }
 
         MyContext _db;
@@ -44,6 +52,7 @@ namespace HorseRace
             CmbRace.DisplayMember = "Name";
             LstRaces.DisplayMember = "Name";
             CmbRace.SelectedIndex = -1;
+            CmbRace.DataSource = _db.Races.Where(x => x.DataStatus == Models.Enums.DataStatus.Inserted || x.DataStatus == Models.Enums.DataStatus.Updated).ToList();
         }
 
         private void BtnAddOrEdit_Click(object sender, EventArgs e)
@@ -81,6 +90,9 @@ namespace HorseRace
                         {
                             _raceCard.Races.Add(item);
                         }
+                        _raceCard.DataStatus = Models.Enums.DataStatus.Updated;
+                        _raceCard.UpdatedDate=DateTime.Now;
+
                         _db.SaveChanges();
                         DialogResult = DialogResult.OK;
                         MessageBox.Show("Bulletin updated succesfully");
@@ -105,6 +117,14 @@ namespace HorseRace
         {
             LstRaces.Items.Remove(CmbRace.SelectedItem);
             _raceCard.Races.Remove(LstRaces.SelectedItem as Race);
+        }
+
+        private void BtnActivate_Click(object sender, EventArgs e)
+        {
+            _raceCard.DataStatus = Models.Enums.DataStatus.Updated;
+            _raceCard.UpdatedDate = DateTime.Now;
+            _raceCard.DeletedDate = null;
+            _db.SaveChanges();
         }
     }
 }

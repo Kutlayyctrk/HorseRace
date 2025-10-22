@@ -38,6 +38,7 @@
             this.LstRaces = new System.Windows.Forms.ListBox();
             this.BtnRaceAdd = new System.Windows.Forms.Button();
             this.BtnDeleteRace = new System.Windows.Forms.Button();
+            this.BtnActivate = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // BtnAddOrEdit
@@ -127,11 +128,22 @@
             this.BtnDeleteRace.UseVisualStyleBackColor = true;
             this.BtnDeleteRace.Click += new System.EventHandler(this.BtnDeleteRace_Click);
             // 
+            // BtnActivate
+            // 
+            this.BtnActivate.Location = new System.Drawing.Point(134, 167);
+            this.BtnActivate.Name = "BtnActivate";
+            this.BtnActivate.Size = new System.Drawing.Size(100, 23);
+            this.BtnActivate.TabIndex = 13;
+            this.BtnActivate.Text = "Activate";
+            this.BtnActivate.UseVisualStyleBackColor = true;
+            this.BtnActivate.Click += new System.EventHandler(this.BtnActivate_Click);
+            // 
             // FrmRaceCardAddOrEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(548, 322);
+            this.Controls.Add(this.BtnActivate);
             this.Controls.Add(this.BtnDeleteRace);
             this.Controls.Add(this.BtnRaceAdd);
             this.Controls.Add(this.LstRaces);
@@ -161,5 +173,6 @@
         private System.Windows.Forms.ListBox LstRaces;
         private System.Windows.Forms.Button BtnRaceAdd;
         private System.Windows.Forms.Button BtnDeleteRace;
+        private System.Windows.Forms.Button BtnActivate;
     }
 }

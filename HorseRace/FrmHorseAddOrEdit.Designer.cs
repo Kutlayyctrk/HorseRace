@@ -35,11 +35,12 @@
             this.TxtName = new System.Windows.Forms.TextBox();
             this.TxtRegion = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.BtnActivate = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // BtnAddOrEdit
             // 
-            this.BtnAddOrEdit.Location = new System.Drawing.Point(272, 136);
+            this.BtnAddOrEdit.Location = new System.Drawing.Point(268, 165);
             this.BtnAddOrEdit.Name = "BtnAddOrEdit";
             this.BtnAddOrEdit.Size = new System.Drawing.Size(112, 23);
             this.BtnAddOrEdit.TabIndex = 3;
@@ -94,11 +95,22 @@
             this.label3.TabIndex = 5;
             this.label3.Text = "Region:";
             // 
+            // BtnActivate
+            // 
+            this.BtnActivate.Location = new System.Drawing.Point(268, 136);
+            this.BtnActivate.Name = "BtnActivate";
+            this.BtnActivate.Size = new System.Drawing.Size(112, 23);
+            this.BtnActivate.TabIndex = 7;
+            this.BtnActivate.Text = "Activate";
+            this.BtnActivate.UseVisualStyleBackColor = true;
+            this.BtnActivate.Click += new System.EventHandler(this.BtnActivate_Click);
+            // 
             // FrmHorseAddOrEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(508, 244);
+            this.Controls.Add(this.BtnActivate);
             this.Controls.Add(this.BtnAddOrEdit);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -122,5 +134,6 @@
         private System.Windows.Forms.TextBox TxtName;
         private System.Windows.Forms.TextBox TxtRegion;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button BtnActivate;
     }
 }

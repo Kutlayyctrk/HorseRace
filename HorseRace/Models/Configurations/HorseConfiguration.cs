@@ -16,6 +16,7 @@ namespace HorseRace.Models.Configurations
             Property(x => x.Name).HasColumnName("At Adı").IsRequired();
             Property(x => x.Age).HasColumnName("Yaş").IsRequired();
             Property(x => x.Region).HasColumnName("Irk").IsRequired();
+            HasOptional(x=>x.Jockey).WithMany(x=>x.Horses).HasForeignKey(x=>x.JokeyId).WillCascadeOnDelete(false);
 
         }
     }
